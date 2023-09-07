@@ -1,17 +1,13 @@
 import axios from 'axios';
 import express from 'express';
 import queryString from 'query-string';
-import cors from 'cors';
-
-app.use(
-  cors({
-    origin: '*',
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    allowedMethods: ['GET', 'POST', 'PUT', 'DELETE'],
-  })
-);
 
 const app = express();
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  next();
+});
 
 app.get('/getvideoinfo', async (req, res) => {
   const videoInfoUrl = req.query.url;
