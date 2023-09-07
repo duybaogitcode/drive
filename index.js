@@ -1,6 +1,15 @@
 import axios from 'axios';
 import express from 'express';
 import queryString from 'query-string';
+import cors from 'cors';
+
+app.use(
+  cors({
+    origin: '*',
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    allowedMethods: ['GET', 'POST', 'PUT', 'DELETE'],
+  })
+);
 
 const app = express();
 
